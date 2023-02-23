@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 /**
 *main - causes an infinite loop
 *
@@ -7,17 +6,19 @@
 */
 int main(void)
 {
-	int i;
+int i;
 
-	printf("Ifinite loop incoming : (\n");
+printf("Ifinite loop incoming : (\n");
 
-	i = 0;
-	/**
-	 * while (i < 10)
-	 * {
-	 *       putchar(i);
-	 * }
-	 */
-	printf("Infinite loop avoided! \\o/\n");
-	return (0);
+i = 0;
+
+/**
+*while (i < 10)
+*{
+*Infinite loop - No increase of variable
+*putchar(i);
+*}
+*/
+printf("Infinite loop avoided! \\o/\n");
+return (0);
 }
