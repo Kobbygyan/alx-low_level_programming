@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - Prints the sum of all multiples of 3 or 5 up to 1024
+ * main - Lists all the natural numbers below 1024 (excluded) that are multiples of 3 0r 5.
  * Return: Always 0 (Success)
  */
 
@@ -14,6 +14,7 @@ int main(void)
 		if ((i % 3 == 0) || (i % 5 == 0))
 			sum += 1;
 	}
+
 	printf("%d\n", sum);
 
 	return (0);
