@@ -1,0 +1,1 @@
+Pointers in C are used to store the address of variables or a memory location. This variable can be of any data type i.e, int, char, function, array, or any other pointer. The size of the pointer depends on the architecture
