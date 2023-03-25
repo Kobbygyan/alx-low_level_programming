@@ -4,10 +4,13 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-typedef struct printer{
-char *symbol;
-void (*print)(va_list arg);
-} printer_t;
+typedef struct printer
+{
+	char *symbol;
+	void (*print)(va_list arg);
+       
+	printer_t;
+}
 
 int _putchar(char c);
 int sum_them_all(const unsigned int n, ...);
