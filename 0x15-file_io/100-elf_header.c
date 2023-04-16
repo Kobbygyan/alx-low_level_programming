@@ -34,9 +34,9 @@ void check_elf(unsigned char *e_ident)
 	for (unit = 0; unit < 4; unit++)
 	{
 		if (e_ident[unit] != 127 &&
-		    e_ident[unit] != 'E' &&
-		    e_ident[unit] != 'L' &&
-		    e_ident[unit] != 'F')
+				e_ident[unit] != 'E' &&
+				e_ident[unit] != 'L' &&
+				e_ident[unit] != 'F')
 		{
 			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 			exit(98);
@@ -79,17 +79,17 @@ void print_class(unsigned char *e_ident)
 
 	switch (e_ident[EI_CLASS])
 	{
-	case ELFCLASSNONE:
-		printf("none\n");
-		break;
-	case ELFCLASS32:
-		printf("ELF32\n");
-		break;
-	case ELFCLASS64:
-		printf("ELF64\n");
-		break;
-	default:
-		printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+		case ELFCLASSNONE:
+			printf("none\n");
+			break;
+		case ELFCLASS32:
+			printf("ELF32\n");
+			break;
+		case ELFCLASS64:
+			printf("ELF64\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
 	}
 }
 
@@ -104,38 +104,38 @@ void print_data(unsigned char *e_ident)
 
 	switch (e_ident[EI_DATA])
 	{
-	case ELFDATANONE:
-		printf("none\n");
-		break;
-	case ELFDATA2LSB:
-		printf("2's complement, little endian\n");
-		break;
-	case ELFDATA2MSB:
-		printf("2's complement, big endian\n");
-		break;
-	default:
-		printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+		case ELFDATANONE:
+			printf("none\n");
+			break;
+		case ELFDATA2LSB:
+			printf("2's complement, little endian\n");
+			break;
+		case ELFDATA2MSB:
+			printf("2's complement, big endian\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
 	}
 }
 
 /**
- *  * print_version - Displays the ELF header's version.
- *   * @e_ident: A pointer to an array that holds the version of the ELF file.
- *    */
+ * print_version - Displays the ELF header's version.
+ * @e_ident: A pointer to an array that holds the version of the ELF file.
+ */
 
 void print_version(unsigned char *e_ident)
 {
-	 printf(" Version: %d",
+	printf(" Version: %d",
 			  e_ident[EI_VERSION]);
 
 	switch (e_ident[EI_VERSION])
 	{
-	case EV_CURRENT:
-		printf(" (current)\n");
-		break;
-	default:
-		printf("\n");
-		break;
+		case EV_CURRENT:
+			printf(" (current)\n");
+			break;
+		default:
+			printf("\n");
+			break;
 	}
 }
 
@@ -144,42 +144,45 @@ void print_version(unsigned char *e_ident)
  * @e_ident: A pointer to an array that holds the version of the ELF file
  */
 
-void print_osabi(unsigned char *e_ident) {
-    printf(" OS/ABI: ");
-    switch (e_ident[EI_OSABI]) {
-        case ELFOSABI_NONE:
-            printf("UNIX - System V\n");
-            break;
-        case ELFOSABI_HPUX:
-            printf("UNIX - HP-UX\n");
-            break;
-        case ELFOSABI_NETBSD:
-            printf("UNIX - NetBSD\n");
-            break;
-        case ELFOSABI_LINUX:
-            printf("UNIX - Linux\n");
-            break;
-        case ELFOSABI_SOLARIS:
-            printf("UNIX - Solaris\n");
-            break;
-        case ELFOSABI_IRIX:
-            printf("UNIX - IRIX\n");
-            break;
-        case ELFOSABI_FREEBSD:
-            printf("UNIX - FreeBSD\n");
-            break;
-        case ELFOSABI_TRU64:
-            printf("UNIX - TRU64\n");
-            break;
-        case ELFOSABI_ARM:
-            printf("ARM\n");
-            break;
-        case ELFOSABI_STANDALONE:
-            printf("Standalone App\n");
-            break;
-        default:
-            printf("<unknown: %x>\n", e_ident[EI_OSABI]);
-    }
+void print_osabi(unsigned char *e_ident)
+{
+	printf(" OS/ABI: ");
+
+	switch (e_ident[EI_OSABI])
+	{
+		case ELFOSABI_NONE:
+			printf("UNIX - System V\n");
+			break;
+		case ELFOSABI_HPUX:
+			printf("UNIX - HP-UX\n");
+			break;
+		case ELFOSABI_NETBSD:
+			printf("UNIX - NetBSD\n");
+			break;
+		case ELFOSABI_LINUX:
+			printf("UNIX - Linux\n");
+			break;
+		case ELFOSABI_SOLARIS:
+			printf("UNIX - Solaris\n");
+			break;
+		case ELFOSABI_IRIX:
+			printf("UNIX - IRIX\n");
+			break;
+		case ELFOSABI_FREEBSD:
+			printf("UNIX - FreeBSD\n");
+			break;
+		case ELFOSABI_TRU64:
+			printf("UNIX - TRU64\n");
+			break;
+		case ELFOSABI_ARM:
+			printf("ARM\n");
+			break;
+		case ELFOSABI_STANDALONE:
+			printf("Standalone App\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", e_ident[EI_OSABI]);
+	}
 }
 
 /**
@@ -189,10 +192,9 @@ void print_osabi(unsigned char *e_ident) {
 
 void print_abi(unsigned char *e_ident)
 {
-	printf(" ABI Version: %d\n",
-		e_ident[EI_ABIVERSION]);
+	printf("  ABI Version:                       %d\n",
+	       e_ident[EI_ABIVERSION]);
 }
-
 
 /**
  * print_type - Displays the type of an ELF header.
@@ -209,23 +211,23 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 
 	switch (e_type)
 	{
-	case ET_NONE:
-		printf("NONE (None)\n");
-		break;
-	case ET_REL:
-		printf("REL (Relocatable file)\n");
-		break;
-	case ET_EXEC:
-		printf("EXEC (Executable file)\n");
-		break;
-	case ET_DYN:
-		printf("DYN (Shared object file)\n");
-		break;
-	case ET_CORE:
-		printf("CORE (Core file)\n");
-		break;
-	default:
-		printf("<unknown: %x>\n", e_type);
+		case ET_NONE:
+			printf("NONE (None)\n");
+			break;
+		case ET_REL:
+			printf("REL (Relocatable file)\n");
+			break;
+		case ET_EXEC:
+			printf("EXEC (Executable file)\n");
+			break;
+		case ET_DYN:
+			printf("DYN (Shared object file)\n");
+			break;
+		case ET_CORE:
+			printf("CORE (Core file)\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", e_type);
 	}
 }
 
@@ -242,7 +244,7 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 	{
 		e_entry = ((e_entry << 8) & 0xFF00FF00) |
-			  ((e_entry >> 8) & 0xFF00FF);
+			((e_entry >> 8) & 0xFF00FF);
 		e_entry = (e_entry << 16) | (e_entry >> 16);
 	}
 
@@ -274,7 +276,7 @@ void close_elf(int elf)
  * main - Outputs the information contained in the
  * ELF header at the start of an ELF file.
  * @argc: The count of arguments passed to the program.
- * @argv: A collection of pointers to the arguments, organized in an array.
+ * @argv: An array of pointers to the arguments.
  *
  * Return: 0 on success.
  *
@@ -324,4 +326,3 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	close_elf(o);
 	return (0);
 }
-
