@@ -3,8 +3,8 @@
 /**
  * flip_bits - counts number of bits that need to be flipped in the
  *             first input integer in order to obtain the second input integer.
- * @n The first input integer
- * @m The second input integer
+ * @n: The first input integer
+ * @m: The second input integer
  *
  * Return: The number of bits to flip
  */
